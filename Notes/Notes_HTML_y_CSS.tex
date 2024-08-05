@@ -1,0 +1,1421 @@
+\documentclass[10pt,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands]{babel}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{mathrsfs}
+\usepackage{ upgreek }
+\usepackage[pdftex]{hyperref}
+\usepackage{nopageno}
+\usepackage{listings}
+\addtolength{\hoffset}{-3.5cm}
+\addtolength{\textwidth}{7.2cm}
+\addtolength{\voffset}{-3cm}
+\addtolength{\textheight}{5cm}
+\pagestyle{empty}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{\textbf{Notas de HTML y CSS}}
+
+\author{Lucho Cervantes Jorge Luis}
+
+\begin{document} \maketitle 
+
+\section{Comentario inicial}
+
+    No hay mejores notas que la documentación original, de este modo, el presente trabajo no busca sustituir a dicha documentación. Por el mismo motivo, la estructura y los conceptos no son tan rigurosos. Este trabajo es más un catálogo, con una muy breve y probablemente incompleta descripción, de las herramientas que utilizo frecuentemente. El presente trabajo tiene como base inicial el curso \textit{\textbf{Curso de HTML y CSS desde CERO (Completo)}}  ~\cite{HTMLyCSSDalto} y posteriormente se va complementando según valla aprendiendo más cosas. 
+    
+\begin{multicols}{2} \tableofcontents
+
+\section{Preeliminares}
+\subsection{Hints}
+
+    Para acceder al código de una página web, basta dar clic derecho y luego seleccionar la opción inspeccionar.\\ \newline Para hacer comentarios, en HTML se usa:   
+    \begin{lstlisting}[language=HTML]
+<! --  Comentario  -->        
+    \end{lstlisting}
+
+    Para colocar de manera automática 6 renglones con las etiquetas \textbf{<hi></hi>} (i=1, ... , 6) se usa h\$*6.
+
+\subsection{HTML}
+
+    (Hipertext markup language). Sirve para establecer la estructura de la página web mediante la creación de elementos (tag o etiquetas). Los elementos (por ejemplo, un botón) tienen propiedades como tamaño, color, color de fondo, etc. Las propiedades son, en principio, determinadas según los valores por default de cada navegador, de modo que una página luce distinta en cada navegador. Para resolver esto se usa CSS.  
+
+\subsection{CSS} 
+
+    (Cascading style sheets). Se encarga de establecer las propiedades estéticas de los elementos o etiquetas de la página web. A demás de esto, se encarga de que estas sean las mismas en cada navegador.
+
+\section{Inicio en HTML}
+
+    Se trabaja con archivos de extensión .html. En particular, la mayoría de los servidores compartidos están configurados de forma que el archivo de la página que tienen que leer, sea el de nombre index.html.\\ \newline Para abrir una etiqueta se usa: 
+
+    \begin{lstlisting}[language=HTML]
+<nombre_etiqueta>        
+    \end{lstlisting}
+
+    Para hacer el código más corto se usa la palabra tag. Para cerrar un tag se usa:
+                
+    \begin{lstlisting}[language=HTML]
+</nombre_etiqueta>        
+    \end{lstlisting}
+
+    Para indicar un texto en letras negritas se usa la etiqueta \textbf{b}:
+    
+    \begin{lstlisting}[language=HTML]
+<b> Texto en negritas </b>        
+    \end{lstlisting}
+
+    aunque en general, CSS se encarga de la parte estética. Otra importancia de las etiquetas es que ayudan a posicionar mejor nuestra página en el buscador. Por ejemplo, las etiquetas \textbf{h1}, y \textbf{h2} son para definir un título y un subtítulo. Si bien con CSS podemos hacer que visualmente ambos sean idénticos, al momento de que un navegador realice una búsqueda, se dará prioridad a lo que dice en h1 para ver si  posiciona o no nuestra página en lo primeros lugares de la búsqueda.
+
+\section{Estructura de una página web}
+
+    Para cargar la estructura de una página web se usa html:5. Esto carga una ''plantilla'' de la estructura de una página web: 
+\end{multicols}
+
+    \begin{lstlisting}[language=HTML]
+<!-- Etiqueta que define la version de html usada (no se cierra) -->
+<!DOCTYPE html>
+
+<!-- Se indica todo lo que abarcara la pagina web y su lenguaje. se puede usar 'es' (espanol) -->
+<html lang="en">
+
+<!-- Se indica la informacion sobre la pagina -->
+<head>
+    <!-- Se indica el conjunto de caraceres a utilizar -->
+    <meta charset="UTF-8">
+
+    <!-- Configuracion de la pantalla. Primero se indica que la pagina se adapte a la pantalla 
+    del dispositivo y luego que inicialmente muestre un zoom de 1 -->   
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+
+    <!-- Titulo de la pestana de la pagina-->
+    <title>Document</title>
+</head>
+
+<!-- Cuerpo de la pagina con todo el contenido-->
+<body>
+    
+</body>
+</html>       
+    \end{lstlisting}
+    
+\begin{multicols}{2}
+\subsection{Párrafos y encabezados}
+
+    Los párrafos se indican con la etiqueta \textbf{p} y los encabezados con \textbf{hi} (con i=1,...,6):
+    
+    \begin{lstlisting}[language=HTML]
+<hi> Encabezado o titulo </hi>        
+<p> Texto que compone a un parrafo </p>        
+    \end{lstlisting}
+    
+    Naturalmente, estas etiquetas se colocan dentro del cuerpo de la página. En el caso de los \textbf{hi}, el tamaño de los títulos disminuye conforme aumenta i. También disminuye la jerarquía. En particular, una página web solo debe contar con un \textbf{h1} de otro modo se perjudica la visibilidad de la página en los buscadores. 
+    
+\subsection{Listas}
+
+    Son útiles para crear menús de navegación. Existen dos tipos de listas, las ordenadas (\textbf{ol}) y las no ordenadas (\textbf{ul}). Los elementos de las listas se indican con la etiqueta \textbf{li} (list item):
+
+    \begin{lstlisting}[language=HTML]
+<1-- Lista ordenada -->
+<ol> 
+    <li> Elemento 1 </li>
+    <li> Elemento 2 </li>
+</ol> 
+    
+<1-- Lista no ordenada -->
+<ul> 
+    <li> Elemento 1 </li>
+    <li> Elemento 2 </li>
+<ul>        
+    \end{lstlisting}
+    
+\subsection{Enlaces}
+
+    Un sitio web es un conjunto de páginas web, cada una de ellas con un propósito específico. Este conjunto de páginas web está conectado mediante enlaces o hipervínculos. \\ \newline Para generar un enlace se usa la etiqueta \textbf{a}, en conjunto con el atributo \textbf{href}:
+    
+    \begin{lstlisting}[language=HTML]
+<1-- Enlace en el area de trabajo -->
+<a href = 'url'> Enlace local </a>
+        
+<1-- Enlace externo -->
+<a href = 'https://url'> Enlace externo </a>
+    \end{lstlisting}
+    Si se quiere que el enlace se abra en una nueva pestaña, se tiene que agregar el atributo \textbf{target}. Este por defecto toma el valor \_self (el enlace se abre en la misma pestaña). Cuando se especifica que tome el valor \_blanck, el enlace se abre en una nueva pestaña.\\ \newline También se cuenta con el atributo \textbf{title}, en el cual se coloca información que será desplegada cuando el mouse pase por encima del botón del enlace. 
+    
+\subsection{Imágenes}
+
+    Para insertar una imagen se utiliza la etiqueta \textbf{img}. Esta etiqueta no requiere cerrarse (es una etiqueta autocerrada) y se usa como: 
+
+    \begin{lstlisting}[language=HTML]
+<img src = '' alt ='' title =''>
+    \end{lstlisting}
+
+    donde el atributo \textbf{src} corresponde a la ruta de la imagen, \textbf{alt} es un mensaje alternativo mostrado en el caso de que la imagen no se encuentre y \textbf{title} es la información desplegada al pasar el mouse sobre la imagen. Nuevamente, solo cargamos la imagen en la página, el formato y atributos estéticos quedarán a cargo de CSS. 
+    
+\subsection{Rutas}
+
+    Se consideran dos tipos de rutas, las absolutas y las relativas. Las primeras son aquellas en las que no importa desde donde se genere la petición de entrada, la página y su contenido siempre se mostrarán (Se usan para redirigir a páginas externas). Las segundas son aquellas donde depende desde donde se genere la petición de entrada (Se usan para redirigir a páginas del propio sitio web).\\ \newline En una ruta relativa, para indicar que se entre a una carpeta se usa /nombre\_carpeta. Para que se regrese una carpeta se usa ../   
+
+\subsection{Formularios}
+
+    Sirven para pedirle datos al usuario. Estos se indican con la etiqueta \textbf{form} y adentro de ellos se coloca el tipo de entrada de datos deseamos. Esto último se hace con la etiqueta \textbf{input}:
+
+    \begin{lstlisting}[language=HTML]
+<form>
+    <input type = ''>
+</form>
+    \end{lstlisting}
+
+    Hay varios tipos de inputs. Algunos de ellos son text, color, submit, checkbox, radius, file, email etc. \\ \newline Cuentan con el atributo \textbf{required}, que al colocarlo los vuelve obligatorios. \\ \newline El atributo \textbf{name} sirve para poder referenciar y manipular los datos. Es como si fuera una variable ''name'' que almacena los datos computados por el usuario.\\ \newline El atributo \textbf{placeholder} Sirve para poner un texto de ejemplo que desaparece cuando el usuario computa la información requerida. No todos los inputs tienen \textbf{placeholder}.\\\newline \textbf{minlength}='n' es un atributo que pide un mínimo de caracteres para que el input proceda. 
+    
+\section{Inicio en CSS} 
+
+    Se distinguen 3 formas de enlazar código CSS con objetos de HTML. 
+    \begin{itemize}
+        \item \textbf{Estilos en línea.} Cuando se da el estilo en una sola línea de código (el estilo se da como atributo). Por ejemplo, en un encabezado y un párrafo:
+
+        \begin{lstlisting}[language=HTML]
+<h1 style='color:blue ; font-size: 40px;'>
+    Titulo
+</h1>
+<p style='color:red ; font-size: 20px;'>  
+    Parrafo
+</p>
+        \end{lstlisting}
+
+        La desventaja de esto es que se mezclan dos tipos de código y los atributos solo se aplican en los objetos en los que se colocaron (I.e. si se escribe otro párrafo, no se aplicará el estilo a menos que se le indique nuevamente).
+        
+        \item \textbf{Dando el estilo como etiqueta.} Se hace uso de la etiqueta \textbf{style}:
+        
+        \begin{lstlisting}[language=HTML]
+<h1> Titulo </h1>
+<p> Parrafo </p>
+<style>
+    h1 {
+        color:blue;
+        font-size: 40 px
+    }
+    p {
+        color:red;
+        font-size: 20 px
+    }
+</style>
+        \end{lstlisting} 
+
+        En este caso, se tienen bloques separados de código HTML y código CSS. .
+
+        \item \textbf{Archivos con HTML Y CSS separados.} Para cada página web, se tiene un documento con todo el código HTML y un documento con todo el código CSS. Para enlazar ambos archivos, dentro de la etiqueta \textbf{head} del archivo HTML se usa la etiqueta \textbf{link}:
+
+        \begin{lstlisting}[language=HTML]
+<link rel = 'stylesheet' href='arch.css'>
+        \end{lstlisting}
+    \end{itemize}
+
+\subsection{Selectores}
+
+    Como se vió anteriormente, al usar
+
+    \begin{lstlisting}[language=HTML]
+p{
+    atributos;
+}
+    \end{lstlisting}
+
+    Los atributos especificados se aplican a todos los objetos definidos con una etiqueta \textbf{p}. Sin embargo, puede ocurrir que queramos que dos párrafos tengan un formato distinto. Para hacer esto, en el archivo HTML, a los párrafos de diferente formato se les define una clase como atributo:
+
+    \begin{lstlisting}[language=HTML]
+<p class = 'nombre_clase'>
+    Parrafo
+</p>
+    \end{lstlisting}
+
+    y se asignan los atributos (separados por ;) en el archivo CSS:
+
+    \begin{lstlisting}[language=HTML]
+p {
+    atributo_1;
+    atrubuto_2;
+}
+.nombre_clase {
+    atributos distintos
+}
+    \end{lstlisting}
+
+    En particular, puede haber más de un párrafo en la clase definida. Si queremos que el párrafo pertenezca a más de una clase, estas se nombran separadas por un espacio en \textbf{class}. \\\newline Si queremos que solo un párrafo tenga un formato en específico y distinto, conviene identificarlo con un id:
+        
+    \begin{lstlisting}[language=HTML]
+<p id = 'Identificacion'>
+    Parrafo
+</p>
+    \end{lstlisting}
+
+    y se asignan los atributos en el archivo CSS:
+
+    \begin{lstlisting}[language=HTML]
+p {
+    atributos
+}
+#Identificacion {
+    atributos distintos
+}
+    \end{lstlisting}
+
+    Si se desea asignar otras propiedades solo a una parte del párrafo, en el archivo HTML dicha parte se encierra con la etiqueta \textbf{span} y luego, en el archivo CSS se indican sus propiedades:
+    
+    \begin{lstlisting}[language=HTML]
+span {
+    atributos
+}
+    \end{lstlisting}
+
+    Naturalmente, todo lo anterior aplica para las otras objetos como los \textbf{hi} etc.
+
+\subsection{Atributos de texto}
+
+    Los atributos de texto más usados son:
+    \begin{itemize}
+        \item \textbf{color:} color del texto.
+        \item \textbf{font-family:} fuente.
+        \item \textbf{font-size:} tamaño de la fuente.
+        \item \textbf{font-weight:} grosor de fuente. Es mejor usar font-weight: bold\footnote{Es equivalente al valor de 700. Puede usarse \textbf{bolder} en su lugar. Este toma el siguiente valor del que toma \textbf{bold}.} que la etiqueta \textbf{b}, para poner el texto en negritas. Si se desea que solo una parte del párrafo se ponga en negritas, dicha parte se debe encerrar en la etiqueta\textbf{strong}.
+        \item \textbf{font-style:} grado de inclinación de la fuente.
+        \item \textbf{text-aling:} alineación del texto.
+        \item \textbf{text-decoration:} subrayar, tachar el texto, colocar un overline etc.
+        \item \textbf{line-height:} espacio entre renglones. 
+        \item \textbf{letter-spacing:} espacio entre letras.
+        \item \textbf{text-transform:} poner todo en mayúsculas o minúsculas, poner el inicio de cada palabra en mayúsculas, etc.       
+    \end{itemize}
+
+\subsubsection{Fuentes de texto externas}
+
+    Primero se debe buscar una fuente de nuestro gusto. Esto puede hacerse en Google Fonts. Elegida esta, se copia el código anexo a ella y se pega en el archivo HTML dentro de la etiqueta \textbf{head}. El código aparece en una etiqueta \textbf{link}. Hecho esto, el nombre de la nueva fuente ya debería aparecer como opción en font-family.
+
+ \section{Modelo de caja} \label{modelo_caja}      
+
+    Cada objeto en HTML se puede pensar como una caja. Según cambiemos las propiedades de cada caja es como se le da forma a una página web.  Para generar una caja vacía (o una división) se usa la etiqueta \textbf{div} en la etiqueta \textbf{body} del HTML. En el CSS se le pueden dar propiedades como sigue:
+
+    \begin{lstlisting}[language=HTML]
+div {
+    <!-- Obligatorias para que aparezca la caja-->
+    width: 200px ;
+    heigth: 90% ; 
+
+    <!-- demas propiedades -->
+}
+    \end{lstlisting}
+    
+   Es un input para volúmenes de texto más grand Cuando se pone un porcentaje en \textbf{width} el ancho de la caja es dicho porcentaje del ancho de la caja que la contiene. Ocurre lo mismo con \textbf{height}. Esto es útil cuando la pantalla cambia de tamaño. Pueden agregarse \textbf{min-width} y \textbf{max-width} para que al modificarse estos no sobrepasen un límite fijo.\\\newline  Las propiedades más importantes de las cajas son: es.
+    
+       \begin{itemize}
+        \item \textbf{Contenido.} Texto, imagen o archivo que contiene la caja.
+        \item \textbf{Padding.} Espacio entre el contenido y los límites de la caja. Se tienen las siguientes formas:
+
+        \begin{lstlisting}[language=HTML]
+<!-- Misma separacion en los 4 bordes -->
+padding: 10px
+
+<!-- Horizontal y vertical -->
+padding: 10px 20px
+            
+<!-- arriba derecha abajo izquierda -->
+padding: 10px 20px 11px 19px
+
+<!-- O equivalentemente -->
+padding-top: 10 px
+padding-right: 20px
+padding-bottom: 11px
+padding-left: 19px
+        \end{lstlisting}
+
+        Esto también aplica para el margen.
+        
+        \item \textbf{Borde:} Líneas que resaltan los límites de la caja. Se tienen las siguientes propiedades:
+
+        \begin{itemize}
+            \item [-]\textbf{border-width:} tamaño o grosor del borde.
+            \item [-]\textbf{border-style:} permite elegir si el borde es una línea continua, de puntos, línea doble, etc.
+            \item [-]\textbf{border-color:} color del borde.
+            \item [-]\textbf{border-top:} borde de arriba. Análogamente, se usa \textbf{-bottom, -right y -left}.
+            \item [-]\textbf{border-radius:} permite redondear las esquinas de las cajas.
+            \item [-]\textbf{border-top-left-radius:}  para redondear la esquina superior izquierda. Tiene sus versiones análogas para las otras esquinas. Puede suplirse con:
+            \begin{lstlisting}[language=HTML]
+<!-- arr_iz, arr_der, ab_der, aj_iz-->
+border-radius: 0px 0px 20px 20px;
+            \end{lstlisting}
+        \end{itemize}
+
+        Para que un borde aparezca, se necesita especificar al menos su ancho y su estilo. Al igual que con \textbf{padding}, se pueden especificar las primeras 3 propiedades en una sola línea de código, por ejemplo:
+
+        \begin{lstlisting}[language=HTML]
+border: 5px solid black;
+        \end{lstlisting}
+
+        En el caso de \textbf{-radius} el redondeo al colocar el valor en píxeles es muy distinto al obtenido colocando un porcentaje.
+        
+        \item \textbf{Margin:} Distancia colocada entre la caja y otros objetos. Al colocar margin = auto el objeto se centra horizontalmetne.
+        \item \textbf{background:} es el fondo
+        \item \textbf{background-color:} para indicar el color del fondo 
+        \item \textbf{background-image:} Si se quiere colocar una imagen de fondo se usa: 
+
+        \begin{lstlisting}[language=HTML]
+background-image: url(ruta_de_la_imagen); 
+
+<!-- Para indicar el % del ancho de la caja
+que abarcara la imagen-->
+background-size: %;
+        \end{lstlisting}
+
+        Si se coloca el tamaño en píxeles, este siempre será el mismo y si la caja es más grande, la imagen se repetirá hasta llenar el espacio siempre manteniendo el tamaño especificado. \\ \newline Si se coloca la propiedad \textbf{contain}, se procura que la imagen entre al menos una vez en el espacio de la caja. Si la caja es más grande, la imagen se repite. Esto puede modificarse con: 
+        
+        \begin{lstlisting}[language=HTML]
+background.repeat: no-repeat; 
+
+<!-- Tambien estan las opciones
+repeat-x y repeat-y -->
+        \end{lstlisting}   
+
+        El espacio sobrante se queda con el color definido inicialmente.\\ \newline Si se coloca \textbf{cover} el tamaño de la imagen se adapta de manera que cobra exactamente o más a la caja. En el caso de que dicho tamaño sobrepase al de la caja, la imagen se centra con:  
+
+        \begin{lstlisting}[language=HTML]
+background-position: center;
+        \end{lstlisting}
+
+        La posición puede cambiar. Todas las propiedades anteriores se pueden colocar en una sola línea de código al usar únicamente background y colocando las propiedades separadas con espacio. Por ejemplo:
+        
+        \begin{lstlisting}[language=HTML]
+background: url() top / cover red fixed;
+        \end{lstlisting}
+
+        \textcolor{red}{Nota:} \textcolor{blue}{siempre, entre la propiedad position y la propiedad size, se coloca /.}
+        
+    \end{itemize} 
+
+
+\subsection{Box sizing}    
+
+    Al aplicar propiedades como el margen y el padding el tamaño de la caja puede verse aparentemente modificado\footnote{Esto es porque el tamaño fijo se define para el contenido de la caja.}, lo cual puede ser un problema si es que se quieren mantener un tamaño específico, así como agregar dichas propiedades. Para resolver esto se usa box sizing:
+
+    \begin{lstlisting}[language=HTML]
+.clase_caja {
+    box-sizing: border-box;
+}
+    \end{lstlisting}
+
+    En este caso, el tamaño que permanece fijo es el tamaño que abarca hasta el margen de la caja.
+
+\subsection{Unidades de medida}
+
+    Existen dos tipos 
+    
+    \begin{itemize}
+        \item \textbf{Absolutas}: La unidad más común es el pixel, px. Se usa comúnmente para el ancho y alto de imágenes, márgenes, el paddings y el tamaño de la tipografía. Naturalmente, estas unidades se reflejan en la pantalla.\\ \newline También existen los puntos, pt\footnote{1/72 de una pulgada inglesa.}, y las picas, pc\footnote{equivalentes a 12 pt cada una.}. \\ \newline Si queremos que las unidades se reflejen en una impresión se pueden usar los cm, mm o in.
+        \item \textbf{Relativas:} Dependen de alguna otra cantidad. Por ejemplo, el tamaño de la pantalla (el cual cambia con cada dispositivo o con el tamaño de la pestaña).\\ \newline Una de estas unidades es el porcentaje del tamaño definido en la caja que contiene el objeto. Se especifican con \%\\ \newline Otra unidad es el em, el cual tiene el mismo tamaño que el elemento padre. \\ \newline Se tienen los rem. Es análogo al em solo que toma como referencia a un tamaño de fuente ''raiz'' que es definido en todo el archivo html como sigue:
+
+        \begin{lstlisting}[language=HTML]
+html {
+font-size: 500px            
+}
+        \end{lstlisting}    
+
+         Si este no se define se tiene por defecto un tamaño de 16 px.\\ \newline Se tienen las medidas definidas a partir del view port es decir, se toma como referencia el tamaño de la ventana. Se especifican con \textbf{vh, vw}\\ \newline  Se tienen también las unidades \textbf{vmin} que toma el mínimo entre vh y vw. y  \textbf{vmax} que toma el máximo.
+    \end{itemize}
+
+\subsection{Gradientes de color}
+
+    La primera forma de establecer un gradiente entre n colores es colocando \textbf{linear-gradient(direccion, color1, ..., colorn)} en la propiedad \textbf{background}. En lugar de alguno de los dos colores se puede colocar \textbf{transparent}\footnote{Se puede colocar \textbf{Transparent} 10\% para indicar que el 10\% de la imagen es transparente.}. Para que el color se vaya desvaneciendo. En la dirección se puede colocar \textbf{to right, to bottom, to top, to left}. \\ \newline Funciones completamente análogas son \textbf{radial-gradient} y \textbf{conic-gradient.}
+
+\subsection{Sombras}
+
+    Para darle sombra a una caja se usa:
+
+    \begin{lstlisting}
+box-shadow: a, b, c, d, color:        
+    \end{lstlisting}  
+
+    donde a es el movimiento (de preferencia en pixeles) horizontal, b es el movimiento vertical, c es el desenfoque, y d es la extensión de la sombra.\\\newline De igual forma, se le puede dar una sombra al texto con: 
+        
+    \begin{lstlisting}
+text-shadow: a, b, c, color:        
+    \end{lstlisting}  
+
+    A notar que en este caso no se cuenta con d. 
+
+\section{HTML intermedio}
+
+\subsection{Favicons} 
+    
+    Es el ícono que aparece en la pestaña a la izquierda del nombre de la página. Este debe indicarse dentro de la etiqueta \textbf{head} con la etiqueta \textbf{link} como sigue:
+
+    \begin{lstlisting}[language=HTML]
+<link rel='icon' href='ruta' type='image/tipo'>
+    \end{lstlisting}
+
+    donde el tipo puede ser png, ico etc.
+
+\subsection{Metatags}
+
+    Son etiquetas \textbf{meta} para hacer configuraciones que no son visibles en la página. Ya se vio  <meta charset> y <meta name='viewport' content= ...>. Además de viewport se tienen los siguientes nombres:
+
+    \begin{itemize}
+        \item \textbf{description:} en content se coloca la descripción de la página. 
+        \item \textbf{keyword:} se colocan las palabras clave de la página. Estas favorecen la presencia en los buscadores.
+        \item \textbf{autor:} se coloca al creador de la página.
+        \item \textbf{robots:} Si content toma el valor 'nofollow' la página no aparece en los buscadores. Si toma el valor 'nosippet' no permite que el buscador muestre una sección de la página en la sección de resultados. Si toma el valor 'noarchive' el buscador no puede almacenar una copia de la página en la memoria caché. Si toma el valor 'noimageindex' la imagen de la página no aparecen el buscador de imágenes. 
+        \item \textbf{title:} se coloca el título de la página.
+        \item \textbf{OG:algo} Sirve para configurar como se vería nuestra página como un enlace de otras páginas en otras redes sociales. Se recomienda ir a la bibliografía para ver sus atributos.      
+    \end{itemize}
+
+\subsection{Textarea}
+
+    Es un input para volúmenes de texto más grandes. Se crea con la etiqueta \textbf{textarea}. \\ \newline Además de las mencionadas anteriormente para los otros objetos, los textareas tiene las siguientes propiedades:
+
+    \begin{itemize}
+        \item \textbf{resize:} Sirve para que el usuario pueda modificar su tamaño en tiempo real sobre la página. Si se coloca \textbf{both} se puede modificar el ancho y el alto, si se coloca \textbf{vertical} no se puede modificar el ancho. Se tiene algo análogo con \textbf{horizontal.} Es importante recalcar que el usuario tiene que realizar la modificación manualmente. Se coloca \textbf{none} si se quiere mantener fijo su tamaño. \\ \newline \textcolor{red}{Nota:} \textcolor{blue}{ este se coloca en CSS.}
+        \item \textbf{readonly} Se coloca en HTML y vuelve al contenido solo de lectura. En este caso, el contenido se coloca dentro de la etiqueta y no es introducido por el usuario. A pesar de esto, al colocar el mouse encima el textarea se enfocará y al enviar el formulario su contenido será registrado.
+        \item \textbf{disabled} Es análogo a \textbf{readonly} solo que el textarea no se enfoca y su contenido no es registrado al enviar el formulario. I.e. Solo aparece el texto.
+        \item \textbf{max-length} Establece el máximo de caracteres.
+        \item \textbf{rows='n'} Sirve para indicar que el alto del textarea debe ser tal, que quepan n líneas. Así puede ahorrarse el hacer cálculos con el height en CSS.
+
+\subsection{Label} 
+
+    Se indican con la etiqueta \textbf{label} dentro de la caja que contiene al objeto que se va a etiquetar. Para enlazar el label con el objeto que etiqueta, se tiene que darle un \textbf{id} al objeto y luego usar la propiedad \textbf{for} en label. Por ejemplo, con un textarea:
+    
+    \end{itemize}
+
+    \begin{lstlisting}[language=HTML]
+<div>
+    <label for='referencia'>Etiqueta</label>
+    <textarea id='referencia' ></textarea>
+</div> 
+    \end{lstlisting}
+
+    Una forma alternativa de hacer sin usar id, es como sigue:
+
+    \begin{lstlisting}[language=HTML]
+<div>
+    <label>Etiqueta
+    <textarea></textarea>
+    </label>
+</div> 
+    \end{lstlisting}
+
+\subsection{Select}
+
+    Permite generar un selector de opciones. Se hace con la etiqueta \textbf{select}. Las opciones de indican adentro de ella con etiquetas \textbf{option} como sigue:
+    
+    \begin{lstlisting}[language=HTML]
+<div>
+    <select>
+    <option value='val_1'>Opcion 1</option>
+    <option value='val_2'>Opcion 2</option>
+    <option value='val_3'>Opcion 3</option>
+    </select>
+</div> 
+    \end{lstlisting}
+
+    lo encerrado por la etiqueta es el mensaje que selecciona el usuario y \textbf{value} es el valor enviado en el formulario asociado con dicho mensaje. 
+
+\subsection{Datalist}
+
+    Es como un \textbf{select}, pero las opciones pasan a ser sugerencias de autocompletado. El usuario puede computar algo que no necesariamente esté como opción. Esto se hace con el siguiente código:
+
+    \begin{lstlisting}[language=HTML]
+<div>
+    <input list='palabra' name='palabra'>
+    <datalist id='palabra' name'otra_palabra'>
+        <option value='opcion'>Desc</option>
+        <option value='opcion'>Desc</option>
+        <option value='opcion'>Desc</option>        
+    </datalist>
+    </input>
+</div>
+    \end{lstlisting}
+
+    donde \textbf{value} es el valor  que se selecciona y el que se envía en el formulario y Desc es una descripción de lo que dicho valor significa.
+        
+\subsection{Fieldset}
+
+    Sirve para agrupar los campos de un formulario y encerrarlos en una caja con título propio. Se generan con el siguiente código:
+
+    \begin{lstlisting}[language=HTML]
+<fieldset>
+    <legend>Titulo</legend>
+    <div></div>
+    <div></div>
+    <div></div>
+</fieldset>        
+    \end{lstlisting}
+    
+\subsection{Summary and details}
+
+    Sirve para colocar un objeto y desplegar un resumen al darle click con el mouse. Se generan con la etiqueta \textbf{details} sobre el cuerpo de la página (dentro de la etiqueta \textbf{body} si colocarse dentro de una caja \textbf{div}). Su estructura es como la siguiente:
+
+    \begin{lstlisting}[language=HTML]
+
+<details>
+    <summary> Lo que se muestra </summary>
+    Lo que se despliega        
+</details>
+
+    \end{lstlisting}
+        
+\subsection{Más sobre enlaces}
+
+    Si se desea colocar un enlace hacia algún objeto en la misma página, dicho objeto debe ser identificado por un \textbf{id}, posteriormente se coloca el enlace con la etiqueta \textbf{a} con el atributo \textbf{href} cin el valor del \textbf{id} del objeto. Por ejemplo, si se quiere referenciar un subtítulo:
+
+    \begin{lstlisting}[language=HTML]
+<a href='#identificador'> Enlace </a>
+             .
+             .
+             .
+<h2 id='identificador'>Subtitulo</h2>
+    \end{lstlisting}
+
+    \textcolor{red}{Nota:} \textcolor{blue}{Al ser un enlace a un elemento de la misma página, es necesario colocar el símbolo \# antes del \textbf{id}.} \\ \newline Si se desea que el enlace sea para descargar un archivo entonces se coloca el atributo \textbf{download} y en \textbf{href} se coloca la ruta del archivo a descargar:
+        
+    \begin{lstlisting}[language=HTML]
+<a href='ruta_archivo' download> Descarga </a>
+    \end{lstlisting}
+
+    Cuando se crea un enlace a una página externa con el atributo \textbf{target='\_blank'} (en una ventana nueva.) al ingresar nos volvemos vulnerables \footnote{La página anfitriona tiene acceso a nuestro window.opener  (que proporciona una referencia de la página que abrió el enlace, en este caso), permitiendo la modificación o sustitución de nuestra página por una idéntica, para robar información, o la redirección a una página maliciosa}. Para solucionar esto se coloca el atributo \textbf{ref}
+    
+    \begin{lstlisting}[language=HTML]
+<a href='' rel='noopener noreferer nofollow'>
+    Enlace
+</a>
+    \end{lstlisting}
+    
+    el valor \textbf{'noopener'}  niega el acceso a nuestro window.opener. En particular, esto también mejora el rendimiento de la página. Con el valor \textbf{'noreferer'} la página que abre el enlace se vuelve anónima y con el valor \textbf{'nofollow'} la página que abre el enlace y, por tanto, los enlaces colocados por terceros en ella,  no se indexa en los buscadores. Por ejemplo, si los usuarios ''publican'' enlaces maliciosos en nuestra página, estos no aparecerán el Google cuando se busque nuestra página.\\\newline
+    También se pueden crear enlaces para mandar un correo y para llamar a un número:
+
+    \begin{lstlisting}[language=HTML]
+<a href='mailto:correo_destino' >
+    Mandar correo
+</a>
+
+<a href='tel:+telefono_destino' >
+    Llamar
+</a>
+    \end{lstlisting}
+
+\subsection{Tablas}
+
+    Se generan con la etiqueta \textbf{table}. Dentro de ellas se generan las filas con la etiqueta \textbf{tr} y dentro de estas se colocan los valores de campo, cada uno con la etiqueta \textbf{td}. Para indicar los encabezados de la tabla se genera una fila más, pero los nombres se indican con la etiqueta \textbf{th}. Para indicar el encabezado, el cuero y el pie de la tabla, se usan las etiquetas \textbf{thead, tbody} y \textbf{tfoot} respectivamente.Por ejemplo:
+    
+    \begin{lstlisting}[language=HTML]
+<div>
+    <table cellspacing>
+        <thead>
+            <tr>
+                <th>Columna 1</th>
+                <th>Columna 2</th>
+                <th>Columna 3</th>
+            </tr>
+        </head>
+        <tbody>
+            <tr>
+                <td>11</td>
+                <td>21</td>
+                <td>31</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>22</td>
+                <td>32</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>13</td>
+                <td>23</td>
+                <td>33</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>        
+    \end{lstlisting}
+
+    Genera: 
+    \begin{center}
+        \begin{tabular}{lll}
+            \textbf{Columna 1} & \textbf{Columna 2} & \textbf{Columna 3} \\
+            11 & 21 & 31 \\
+            12 & 22 & 32 \\
+            13 & 23 & 33           
+        \end{tabular}
+    \end{center}
+    Si en la etiqueta \textbf{td} se coloca el atributo \textbf{colspan='n'} el campo abarcará n columnas. El atributo \textbf{cellspacing} de la etiqueta \textbf{table} sirve para que en el archivo CSS se pueda usar el atributo \textbf{border-spacing: npx} para separar las columna n pixeles.
+
+\subsection{Videos}
+
+    Para insertar un video se utiliza la etiqueta \textbf{video}:
+
+    \begin{lstlisting}[language=HTML]
+<video src='ruta' controls loop autoplay mute>
+</video>       
+    \end{lstlisting}
+
+    donde el atributo \textbf{controls} es para colocar la barra de control del video. \textbf{autoplay} sirve para que cada que se abra la página se reproduzca el video. En particular, si se refresca la página, el video no se reproduce automáticamente. Para que esto ocurra se agrega \textbf{mute}, sin embargo, el video se reproduce con el volumen al mínimo. \textbf{loop} hace que el video se reproduzca en bucle.\\ \newline Para cargar un archivo de audio solo se sustituye la etiqueta \textbf{video} por la etiqueta \textbf{audio.} \\\newline En el caso del video, dentro de su etiqueta puede colocarse la etiqueta \textbf{track}, encargada de colocar subtítulos:
+
+    \begin{lstlisting}[language=HTML]
+<video src='ruta'>
+    <track src='ruta'>
+</video>       
+    \end{lstlisting}
+
+    donde el \textbf{src} de la etiqueta \textbf{track} es un archivo de subtítulos (.vtt). Si en la etiqueta se coloca el atributo \textbf{default} los subtítulos se colocan sin activarlos en la barra de control. Se coloca \textbf{kind} para indicar si son subtítulos, captions etc. Se coloca \textbf{srclang} para indicar el idioma, hacerlo  también se indica el idioma en la barra de control. Si se desea indicar con una palabra distinta a la que aparece por defecto, esta última se indica con el atributo \textbf{label}.
+
+\subsection{Carga diferida}
+
+    Cuando la página es muy extensa, en términos de rendimiento es más conveniente que solo se carge la parte mostrada al usuario conforme este va navegando. Para esto, a los objetos que querramos que se cargen solo hasta que el usuario llege a la parte de la página donde se encuentran, se les coloca el atributo \textbf{loading='lazy'} .
+    
+\subsection{Semántica de HTML}
+
+    Si bien una página se puede armar con puros \textbf{div} es conveniente indicar las partes de la página con otras etiquetas que si bien no cambian nada visualmente, permiten posicionar mejor la página debido a que asigna una jerarquía a los elementos de la misma, la cual es aprovechada por los buscadores para recomendar la página.\\ \newline Se usan las siguientes etiquetas:
+
+    \begin{itemize}
+        \item \textbf{header.} Indica el encabezado de la página. Puede haber más de uno. No confundir con \textbf{head} (que es el encabezado del archivo HTML que contiene información de la página, no mostrada en pantalla). 
+        \item \textbf{nav.} Indica una barra de navegación, usualmente se coloca dentro de la etiqueta \textbf{header}. Por ejemplo:
+
+        \begin{lstlisting}[language=HTML]
+<header>
+    <nav>
+        <ul>
+            <li>boton 1</li>
+                  .
+                  .
+                  .
+            <li>boton n</li>
+        </ul>
+    </nav>
+</header>
+        \end{lstlisting}
+        
+        \item \textbf{section.} Sirve para separar el contenido en secciones.
+        \item \textbf{main.} Indica el contenido principal de la página.
+        \item  \textbf{aside.} Indica una sección secundaria relacionada con el contenido principal.
+        \item \textbf{footer.} Indica el pie de página (donde se colocan la información de actualización de la página, cuestiones de derechos de autor, términos y condiciones, etc.) de la página.
+    \end{itemize}
+
+\subsection{Accesibilidad}
+
+    Hace referencia a la facilidad que deben de tener las personas con discapacidad para entrar y navegar en la página. Lo más crucial que debe tener la página para lograr esto, es que se pueda sustituir el mouse y su click por las teclas tab y enter. Aunado a esto, cada elemento clickeable debe contener un atributo \textbf{aria-label} con una descripción detallada pero breve de la función del objeto.
+
+\section{CSS intermedio}
+\subsection{Selectores avanzados}
+
+    Para seleccionar un objeto que tiene una propiedad específica se usan los corchetes. Por ejemplo, para seleccionar una imagen por su nombre de archivo:
+
+    \begin{lstlisting}[language=HTML]
+ img [src=''] {
+    Propiedades css
+ }
+
+ <!-- Para seleccionar todas las imagenes que 
+ teminan con "algo": -->
+ img [src$=algo] {
+    propiedades css
+ }
+ 
+ <!-- Para seleccionar todas las que empiecen
+ con "algo": -->
+ img [src^=algo] {
+    propiedades css
+ }
+    \end{lstlisting}
+
+    También se pueden seleccionar objetos de manera descendente. Por ejemplo, para seleccionar solo las \textbf{etiqueta2} que están contenidas en una \textbf{etiqueta1} se usa:
+
+    \begin{lstlisting}[language=HTML]
+etiqueta1 etiqueta2 {
+    propiedades css
+}
+
+<!-- Si no se quieren etiquetas intermedias 
+entre etiqueta1 y etiqueta 2:-->
+etiqueta1 > etiqueta2 {
+    propiedades css
+}
+
+<!-- Si se quieren las primeras etiqueta2 que 
+estan despues de una etiqueta 1 (sin estar
+contenidas):-->
+etiqueta1 + etiqueta2 {
+    propiedades css
+}
+<!-- Si se quieren todas las etiqueta2 que 
+estan despues de una etiqueta 1 :-->
+etiqueta1 ~ etiqueta2 {
+    propiedades css
+}
+<!-- Si se quieren todas las etiqueta2 y
+etiqueta 1 a la vez :-->
+etiqueta1, etiqueta2 {
+    propiedades css
+}
+
+    \end{lstlisting}
+
+\subsection{Herencia} 
+
+    Se refiere a que algunas propiedades declaradas para un objeto (padre) se aplican automáticamente a los objetos que contienen o hijos, al menos, hasta que específicamente las indiquemos en el archivo CSS. Por practicidad, no todas las propiedades se heredan.\\ \newline Si se quiere que una propiedad sea heredada, se coloca el valor \textbf{inherit}. Si no se quiere que sea heredada se coloca \textbf{initial}. Por ejemplo, para heredar el color en un párrafo:
+
+    \begin{lstlisting}[language=HTML]
+P {
+    color: inherit;
+}
+    \end{lstlisting}
+
+    El color se hereda del primer elemento superior que tenga definido un color.
+
+\subsection{Cascada y especificidad}
+
+    Se refiere a la resolución de conflictos cuando a un objeto se le asigna dos veces la misma propiedad. Para esto se usa un sistema de ponderación donde si el objeto solo es seleccionado por su etiqueta, la especificidad es 1, si tiene una clase es 10 y si tiene un id es 100. CSS asignará las propiedades de la selección con el mayor valor de especificidad. Si en ambas asignaciones la especificidad es la misma, las propiedades asignadas serán las de la última instrucción ejecutada en el archivo CSS. \\ \newline Hay más niveles de prioridad, pero estos se obtienen fuera del archivo CSS. Así Tiene más prioridad la asignación de las propiedades mediante la etiqueta \textbf{style} dentro del código HTML. A su vez tiene más prioridad la asignación dentro de las mismas etiquetas de los objetos con el atributo \textbf{style=''}. Finalmente, el nivel más alto de prioridad es cuando a la propiedad se le agrega \textbf{!important}. Por ejemplo:
+
+    \begin{lstlisting}[language=HTML]
+P {
+    color: red; !important
+}        
+    \end{lstlisting}
+
+    Naturalmente, se pueden combinar los niveles de especificidad mencionados en los dos párrafos anteriores. La importancia de la especificidad radica en que se tienen alternativas en el caso de que la asignación más específica no funcione o no sea soportado por el navegador. \textbf{!important}.
+
+\subsection{Pseudo clases}
+
+    Una clase sirve para seleccionar un objeto. Dada una clase, una pseudo clase del objeto en cuestión sirve para asignar sus propiedades en un momento, condición o estado específico (como al pasar el mouse por encima, al hacer la ventana pequeña, al haberle hecho click una vez, etc.) Estas se indican como:
+
+    \begin{lstlisting}[language=HTML]
+objeto:pseudo_calse {
+    Propiedades
+}       
+    \end{lstlisting}
+
+    Se tienen las siguientes pseudo clases:
+
+    \begin{itemize}
+        \item \textbf{hover.} Indica cuando el mouse pasa por encima del objeto.
+        \item \textbf{active.} Cuando se da click en el elemento.
+        \item \textbf{first-child.} Indica el primer objeto de dicho tipo. Su análogo es \textbf{last-child} que selecciona el último objeto. Para elegir al n-ésimo objeto de ese tipo se usa \textbf{nth-child(n)}. Se puede colocar un patrón, por ejemplo, si en el argumento se coloca 2n se seleccionan los pares. En este caso el patrón se ve afectado si hay más hijos de diferentes tipos, para solucionar esto se usa \textbf{nth-of-type}.   
+        \item \textbf{not(.clase)} Indica que se tienen que excluir los objetos con la clase especificada.
+        \item \textbf{empty} Cuando el objeto está vacío, i.e., que sean de la forma:
+
+        \begin{lstlisting}[language=HTML]
+<objeto></objeto>
+        \end{lstlisting}
+        \item \textbf{checked.} Cuando un objeto de tipo checkbox o similar es checkeado. 
+        \item \textbf{link.} Indica un enlace no visitado 
+        \item \textbf{visited.} Indica un enlace visitado.
+        \item \textbf{focus.} Para que el mouse desaparezca al pasar por el objeto que lo tenga activado.
+        \item \textbf{invalid.} Cuando un input es inválido. Por ejemplo cuando se pide una contraseña de n caracteres y se proporciona una con menos. 
+        \item \textbf{valid.} Cuando un input es válido.
+    \end{itemize}
+
+\subsubsection{where is y has} 
+
+    Suponiendo que se tiene la siguiente situación:
+
+    \begin{lstlisting}[language=HTML]
+<div class='part'>
+    <h1></h1>
+    <h2></h2>
+    <h3></h3>
+</div>
+    \end{lstlisting}
+
+    y se quieren establecer propiedades solamente a los hi que están contenidos en la caja de clase part. Esto se tendría que hacer con:
+
+    \begin{lstlisting}[language=HTML]
+.part h1, .part h2, .part h3 {
+    Propiedades 
+}
+    \end{lstlisting}
+
+    Esto puede abreviarse con la pseudo clase \textbf{where}:
+    
+    \begin{lstlisting}[language=HTML]
+.part :where(h1,h2,h3) {
+    Propiedades 
+}
+    \end{lstlisting}
+
+    Ambas maneras tienen la misma especificidad, de modo que si ambas se colocan, se aplicará la instrucción que se ejecute al último.\\ \newline Si en lugar de \textbf{where} se usa \textbf{is}, la especificidad de la instrucción será mayor que la de la forma original. \\ \newline Finalmente, si se quiere dar propiedades a una etiqueta1 solo cuando esta contenga una etiqueta2, se usa la pseudo clase \textbf{has}:
+
+    \begin{lstlisting}[language=HTML]
+etiqueta1 :has(etiqueta2) {
+    Propiedades 
+}
+    \end{lstlisting}
+
+    Como vimos, para seleccionar una etiqueta2 una que es antecedida por una etiqueta 1 se usa etiqueta1 + etiqqueta2, sin embargo, para seleccionar una etiqueta1 que es seguida por una etiqueta2 se usa:
+    
+    \begin{lstlisting}[language=HTML]
+etiqueta1 :has(+etiqueta2) {
+    Propiedades 
+}
+    \end{lstlisting}
+
+\subsection{Pseudo elementos}
+    Sirven para indicar partes específicas de un elemento, a diferencia de las subclases, estos se indican con :: en CSS. Se tienen algunos de los siguientes pseudo elementos:
+    \begin{itemize}
+        \item \textbf{first-letter.} Selecciona la primera letra
+        \item \textbf{first-line.}  la primera línea.
+        \item \textbf{selection.} el recuadro que aparece al seleccionar una parte del texto o de la página. Si se coloca *::selection se modifica el selector de toda la página.
+        \item \textbf{placeholder.} El texto por default adentro de un input.
+        \item \textbf{marker.} Los marcadores de las listas
+        \item \textbf{before.} Para colocar algo antes del objeto.
+    \end{itemize}
+
+\subsection{Metodología BEM}
+
+    Si bien en HTML la estructura del código es más o menos clara debido a la identación y a la contención de objetos, En el caso de CSS puede llegar a ser confuso, pues  las propiedades  se asignan linealmente y en algunos casos se pueden definir en varias partes del código, por lo que se debe tomar en cuenta la especificidad, el orden, etc. Esto puede llegar a ser confuso. Por lo cual se requiere seguir una metodología.  Una opción es la metodología BEM (block element modified).  En esta, se les da formato a todos los bloques similares, asignándoles una clase ''general'' especificando su funcionalidad (caja, formulario, barra de tareas, etc.).  Si hay un bloque que además de las propiedades generales asignadas a los elementos ''general'' tiene propiedades particulares, se le asigna una segunda clase modificadora de la forma ''general--particular'' y a esta se le asignan dichas propiedades. Para darle legibilidad al código, si una etiqueta2 está contenida en una etiqueta1, su clase general será de la forma clase1\_\_clase2.
+
+\subsection{Display}
+
+    Es una propiedad que permite cambiar los elementos en línea \footnote{A estos elementos no se les puede asignar ni un ancho ni un alto, solo toman en cuenta, márgenes y paddings horizontales. Se colocan en la misma línea} (\textbf{display:inline}) a elementos de bloque\footnote{Estos elementos abarcan todo un bloque horizontal o toda una línea.} (\textbf{display:block}) y viceversa; aunque no solo existen estos valores, también pueden tenerse elementos con valores de display  \textbf{none, table, cell-table} y \textbf{inline-block}. En particular, este último es la combinación de \textbf{inline} y \textbf{block} en el sentido de que colocan bloques en un mismo renglón. Hay que recordar que a los bloques sí se les puede asignar un largo y un ancho a diferencia de los elementos inline. Esta es la principal herramienta para crear barras de navegación. 
+
+\subsection{Posicionamiento.}
+
+    Cuando se genera un objeto se le asigna por default una posición fija (\textbf{static}) según el orden en el que se coloquen en el código y según sean elementos \textbf{block},\textbf{inline}, etc. Si se cambia el valor de la propiedad \textbf{position} a \textbf{relative}, el espació ocupado por el objeto en su posición \textbf{static} seguirá apareciendo como ocupado por este, sin embargo, el objeto puede moverse respecto a dicha posición según se especifiquen los valores \textbf{top, bottom, right, left}. En particular, si se colocan \textbf{bottom} y \textbf{top} a la vez, se le dará prioridad a \textbf{top}. Lo mismo ocurre con \textbf{right} y \textbf{left}, Donde se le da prioridad a \textbf{left.} \\ \newline Cuando los objetos se van definiendo en el código HTML, intrínsecamente se les va asignando una profundidad, Así, si el objeto1 se define primero en el código, este se encontrará detrás del objeto2 definido posteriormente. Al superponer los objetos cambiando su posición relativa, el objeto dos estará por encima del objeto1. Para cambiar la profundidad de dichos objetos se cambia el valor de su propiedad \textbf{z-index.} \\ \newline Si se coloca el valor \textbf{absolute} se tiene un resultado similar al \textbf{relative} solo que ya no se aparta la región que ocuparía el objeto en su posición \textbf{static} y la posición del objeto se indica respecto el inicio de la página (esquina superior izquierda, donde se abre la etiqueta \textbf{HTML}). Sin embargo, si el objeto con posición \textbf{absolute} se encuentra contenido en un objeto que tiene una posición \textbf{relative}, la posición del objeto se indica respecto a la esquina superior izquierda del objeto que lo contiene. En particular, si a todos los valores de posición se les asigna un valor cero, pero se coloca un \textbf{margin: auto}, el objeto se coloca en el centro del objeto que lo contiene. \\\newline Si se coloca el valor \textbf{fixed} se tiene el mismo efecto que con absolute, la diferencia es que aunque el objeto al que se le aplique se encuetre contenido en otro objeto con posición \textbf{relative} la posición siempre se indicará respecto al inicio de la página. Adicionalmente, y a diferencia de los casos anteriores, la posición permanecerá fija incluso al navegar en la página. \\ \newline Si se coloca  el valor \textbf{sticky} se tiene el mismo efecto que \textbf{relative} hasta que se cumpla una condición especificada por nosotros (como que alcanse algún número de pixeles por debajo de la parte superior de la página) en tal caso se comporta como \textbf{fixed.} 
+
+\subsection{Transiciones}
+
+    Dado un objeto, una transición se lleva a cabo entre una clase y alguna pseudo clase de dicho objeto. Las transiciones deben indicarse en la clase, con las siguientes propiedades:
+    \begin{itemize}
+        \item \textbf{transition-property:} indica la propiedad del objeto que va a transicionar. En particular se puede colocar el valor \textbf{all} que especifica a todas las propiedades, pero esto no es una buena práctica, pues consume más recursos de los necesarios.
+        \item \textbf{transition-duration:} indica la duración de la transición.
+        \item \textbf{transition-delay:} indica el tiempo de retraso de la transición. 
+        \item \textbf{transition-timing-function:} indica la función de velocidad con la  que se realiza la animación. Tiene tres valores por defecto, aunque se puede computar una curva bezier cúbica al computar \textbf{cubic-bezier(x1,x2,x3,x4)} donde las x son parámetros que definen a la curva. Tmabién se puede colocar \textbf{steps(n)} para que la transición se de en n saltos marcados.
+        \end{itemize}
+    Las cuatro propiedades se pueden resumir en una sola línea de la siguiente manera:
+
+    \begin{lstlisting}[language=HTML]
+transition: propiedad duracion timing delay 
+
+/* Si se tiene mas de una propiedad:*/
+transition:propiedad1 duracion1 timing1 delay1,
+           propiedad2 duracion2 timing2 delay2,
+                            .
+                            .
+                            .
+    \end{lstlisting}
+
+    Los navegadores tienen una opcion para desactivar las transiciones y/o animaciones de una página. Para que nuestra página sea compatible con esta opción y en efecto estas se desactiven se usa un ,edia querie: 
+
+    \begin{lstlisting}[language=HTML]
+@media (prefers-reduced-motion: reduce){
+    codigo CSS con transiciones mas lentas
+
+    /*O si no se quiere ninguna transicion:*/
+    transition: none
+    
+    /*y si no se quiere ninguna animacion:*/
+    animation: none
+}     
+    \end{lstlisting}
+
+    \subsection{Overflow} 
+
+    Es una propiedad que sirve para manejar el contenido que sobresale del contenedor de un objeto. Si toma el valor \textbf{visible} el contenido es visible aunque esté afuera de la caja donde se definió. Si toma el valor \textbf{hidden}\footnote{Existe el valor \textbf{clip}, el cual es completamente análogo, la única diferencia es que este último no reserva espacio para las barras de navegación.} el contenido no se muestra y se pierde. Para solucionar esto, se coloca el valor \textbf{scroll} el cual permite moverse en el contenido mediante una barra de navegación.\\ \newline Se puede separar en las componentes \textbf{overflow-x} y \textbf{overflow-y} que solo actúan en las respectivas direcciones. \\ \newline Si se coloca el valor \textbf{auto}, la barra de navegación solo aparece si el contenido es lo suficientemente largo. 
+
+\subsubsection{Flujo de texto}
+
+    La propiedad principal para controlar como se distribuye el texto en la caja que lo contiene es \textbf{white-space}. Este puede tomar los siguientes valores:
+
+    \begin{itemize}
+        \item \textbf{nowrap.} No coloca saltos de línea para generar renglones que quepan en la caja.
+        \item \textbf{pre.} Se respetan solo los saltos de línea y los espacios en blanco que se especifican desde el HTML. 
+        \item \textbf{pre-wrap} Funciona como \textbf{pre} solo que se agregan los saltos de línea necesarios para que el texto no salga de la caja. 
+    \end{itemize}
+
+    También se tiene la propiedad \textbf{textoverflow}, la cual al tomar el valor \textbf{elipsis} en conjunto con \textbf{white-space: nowrap} y \textbf{overflow: hidden} coloca 3 puntos suspensivos cuando el texto sobrepasa las dimensiones de la caja. \\ \newline La propiedad \textbf{word-break} indica como se recorta el texto para encajar en la caja. Si toma el valor \textbf{break-all} las palabras se recortan sin seguir las reglas gramaticales. Si toma el valor \textbf{keep-all} no se recortan las palabras y el renglón se recorta en un espacio en blanco.\\ \newline
+    Para que las palabras se recorten según las reglas gramaticales se usa la propiedad \textbf{word-wrap} con el valor \textbf{break-word}. Si se coloca el valor \textbf{anywhere} se tiene el mismo comportamiento que con \textbf{breack-word} solo con las palabras muy extensas. \\ \newline Se tiene también la propiedad \textbf{text-wrap}, la cual, al tomar el valor \textbf{balance}, además de cuidar que el texto quede dentro de la caja, este se distribuye de manera armoniosa. Si se coloca el valor \textbf{pretty} lo que se busca es que tanto el primer como el último renglón tengan más de una palabra. 
+    
+
+\subsection{object fit y object position}
+
+    Funcionan de manera completamente análoga a las propiedades \textbf{background} (sección \ref{modelo_caja}) solo que en ves de ajustar la imagen de fondo en la caja que lo contiene, se ajusta la imágen o video a la propia etiqueta \textbf{img}.
+
+\subsection{Outline}
+
+     Como se ha visto, un objeto está conformado por elementos como el contenido, el padding, el borde y el margen, a los cuales se les pueden modificar sus propiedades. En particular, si se cambia su tamaño, el tamaño del objeto se ve también afectado. A demás de estos elementos, un objeto también cuenta con un elemento outline, el cual es prácticamente otro borde después del borde, pero las propiedades de este solo son visuales, i.e. no afectan el tamaño del objeto. En particular, la separación ntre el outline y el borde del objeto se controla con la propiedad \textbf{outline-offset.} \\ \newline Si se desea que no aparezca el outline que aparece por defecto cuando se enfoca un formulario (.clase:focus), se debe colocar el valor \textbf{none}, sin embargo, esto afecta a la accesibilidad de la página cuando se coloca la configuración para personas discapacitadas. Para solucionar esto, a la clase donde se especifique \textbf{outline: none} se le debe de agregar \textbf{-visible}.
+
+ \subsection{Flexbox}
+
+    Además de las cajas \textbf{inline}, \textbf{block}, \textbf{inline-block}, etc. se tiene el modelo de caja \textbf{flexbox.} La caja con esta propiedad no es la que tiene ''flexibilidad'' de movimiento, más bien son sus elementos hijo (flex items) las que se adaptan a las dimensiones de la caja padre, siempre y cuando sean hijos directos.
+\subsubsection{Cajas padre}
+    A la caja padre se le pueden dar los siguientes atributos:
+    \begin{itemize}
+        \item \textbf{display:} indica como se van a mostrar flex items. Si se coloca el valor \textbf{flex}, cuando la ventana disminuya sus dimensiones, no solo se recorrerán, sino que también modificarán sus dimensiones de manera proporcional a la ventana.
+        \item \textbf{flex-direction:} indica como se ordenan los flex items. Si se coloca el valor \textbf{row} se ordenan horizontalmente de izquierda a derecha. Si se coloca \textbf{row-reverse} se ordenan horizontalmente de derecha a izquierda. Si se coloca \textbf{colum} se ordenan verticalmente de arriba hacia abajo. Si se coloca \textbf{colum-reverse} se ordenan verticalmente de abajo hacia arriba. Esto si el texto sigue la dirección de izquierda a derecha (como el español). Para invertir la dirección del texto, a la propiedad \textbf{direction} se le coloca el valor \textbf{rtl}. Esto también invierte las direcciónes de \textbf{flex-direction}.
+        \item \textbf{flex-wrap:} tiene el valor \textbf{nowrap} por defecto, que indica que los box items no pueden cambiar de línea al disminuir la ventana, por lo que cambian sus dimensiones. Si se coloca \textbf{wrap} los elementos si cambian de línea y pierden su ''flexibilidad''. Si se coloca \textbf{wrap-reverse} el salto de línea se hace hacia arriba.
+        \item \textbf{flex-flow:} Se usa para indicar el \textbf{flex-direction} y \textbf{flex-wrap} en una sola línea de código.
+        \item \textbf{justify-content:} sirve para alinear los box items sobre el eje principal (establecido por el \textbf{felx-direction}). Si se coloca \textbf{start} se alinea del lado del que parte la flecha del eje. Si se coloca \textbf{end} se alinea del lado en que termina. Si se coloca center, los box items se centran. Si se coloca \textbf{space-between} se coloca un elemento al inicio, otro al final, y el resto se distribuye en el espacio del centro. Si se coloca \textbf{space-around} se coloca el mismo margen a los box items en la dirección del eje. Si se coloca \textbf{space-evenly} el espacio en la dirección del eje se distribuye equitativamente.   
+        \item \textbf{aling-items:} sirve para alinear en el eje perpendicular al eje principal. Tiene el valor \textbf{stretch} por defecto, en el cual, de no contar con un tamaño establecido, los box items se estiran para llenar por completo el contenedor en dicha dirección. También cuentan con los valores \textbf{start, end, center}, etc. Aunque también cuenta con el valor \textbf{baseline} en el cual, si los box items cuentan con dimensiones distintas, la alineación se hará respecto al texto que contengan. 
+        \item \textbf{aling-content:} es el análogo de \textbf{justify-content} solo que para alinear en la dirección ortogonal a la principal.
+        \item\textbf{gap:} indica la separación entre los elementos (tanto a los lados como arriba y abajo).
+    \end{itemize}
+
+    \textbf{Orden}\\ \newline Para modificar el orden de visualización de los box items, se asigna un valor entero a la propiedad \textbf{order}. Los valores menores se colocan primero. De haber más de un box item con el mismo valor, el orden se determina por el orden que ocupan en el código HTML.
+
+\subsubsection{cajas hijo}
+
+    A las cajas hijo se les pueden dar las siguientes propiedades.
+    \begin{itemize}
+        \item \textbf{flex-grow: } indica la proporción del espacio disponible que tienen que abarcar los box items. Si se coloca el valor 1, todo el espacio se ocupa. En este caso ya no importa lo que se coloque en \textbf{justify-content} a menos que se coloque un límite superior con \textbf{max-whidth.}
+        \item \textbf{flex-shrink:} indica la proporcion en la que se van a encoger los box items cuando la ventana disminuya de tamaño.
+        \item \textbf{flex-basis:} indica el tamaño mínimo en la dirección del eje principal, al que pueden encogerse los box items al disminuir el tamaño de la ventana. Es útil por que se puede combinar con \textbf{flex-wrap:wrap} para que los box items se encojan hasta un valor mínimo  y después hagan un salto de línea. \\ \newline Para resumir las 3 propiedades anteriores en una sola línea de código se usa:
+        
+    \begin{lstlisting}[language=HTML]
+flex: grow shrink basis;
+    \end{lstlisting}
+    
+        \item \textbf{aling-self:} Sirve para alinear un box item de manera particular, dadas todas las alineaciones anteriores, Siempre y cuando se use \textbf{aling-items} en lugar de \textbf{aling-content}. Puede tomar los valores \textbf{start, center, end, baseline} o \textbf{stretch} (ocupar todo el espacio).
+    \end{itemize}
+
+\subsection{Layouts con flexbox}
+
+    El layout de una página es básicamente su esqueleto, indica la distribución del espacio que ocuparan sus elementos.
+
+\section{Responsive desings}
+    Básicamente se hace referencia a los diseños que se adaptan al tamaño de la pantalla del dispositivo que se esté usando y al tamaño de la ventana. 
+
+\subsection{srcset y size en imágenes}
+
+    Una página puede abrirse desde dispositivos con resoluciones diferentes. De este modo, no tiene sentido cargar imágenes de muy alta resolución si el dispositivo es de baja resolución (sería un gasto innecesario de recursos). Para optimizar esto,  se pueden usar varias imágenes iguales, pero con distintas resoluciones, e indicar que se cargue aquella que esté más acorde a la resolución del dispositivo que abra la página.  Esto se hace con \textbf{srcset} en el HTML:
+
+    \begin{lstlisting}[language=HTML]
+<img src='img1' srcset='img1 r1w, ..., imgn rnw'>
+    \end{lstlisting}
+
+    
+    Donde las img van de la resolución más baja (img1) a la más alta (imgn). La resolución se da en píxeles solo que en lugar de colocar px, se coloca w. De acuerdo a esto, si la resolución es menor a r1w se carga img1, si la resolución esta entre r1w y r2w se carga img2 y así sucesivamente. En este caso, lo que se indica es qué imagen cargar. Para indicar con qué tamaño cargas dichas imágenes se agrega la propiedad \textbf{sizes} de la siguiente manera:
+
+    \begin{lstlisting}[language=HTML]
+<img src='img1' 
+    srcset='img1 r1w, ..., imgn rnw'
+    sizes='(max-width= a1px) b1px, ...
+            ..., (max-width= anpx) bnpx'>
+    \end{lstlisting}
+    En donde el valor de la propiedad \textbf{sizes} puede leerse como sigue: Si la pantalla tiene un tamaño de menos de a1px  la imagen se carga con un tamaño de b1px, si la pantalla tiene un tamaño entre a1px y a2px la imagen se carga con un tamaño de b2px y así sucesivamente. Un efecto apreciable  para el desarrollador, es que con \textbf{sizes}, al variar continuamente la resolución de la página, la imagen da saltos en lugar de adaptarse de manera continua. 
+
+\subsection{Picture, source y media}
+
+    Además de \textbf{src}, se pueden usar \textbf{Picture, sourse} y \textbf{media}:
+
+    \begin{lstlisting}[language=HTML]
+<picture>
+  <source media=(max-width: a1px) srcset='img1'>
+                   .
+                   .
+                   .
+  <source media=(max-width: anpx) srcset='imgn'>
+  <img src='imagen_de_preferencia>'
+</picture>
+    \end{lstlisting}
+
+    Para obtener el mismo resultado. Este código funciona como un \textit{if}, en el sentido de que checa la primera condición y si no se cumple se pasa a la segunda y así sucesivamente. Debido a esto, las opciones deben colocarse en el orden adecuado. La ventaja de esta forma, es que se puede cargar una imagen según el formato, indicándolo con el atributo \textbf{type='image/formato'} en \textbf{source}. De este modo se agrega la condición de que si el navegador soporta imágenes de un cierto formato, estas sean las que se carguen. 
+
+\subsection{Media queries}
+
+    Sirven para adaptar la página a diferentes resoluciones. Hacen uso de condiciones i.e.  El contenido de las media queries solo se aplica si se cumple la condición para la que se especifican. Se indican con \textbf{@media} y su estructura es de la forma:
+
+    \begin{lstlisting}[language=HTML]
+@media condicion objeto and (esp) {
+    Propiedades CSS
+}      
+    \end{lstlisting}
+
+    En la condicion no se coloca nada si queremos que las propiedades se apliquen al objeto especificado. Se coloca \textbf{not} si queremeos que se apliquen a todo menos al objeto especificado. se coloca \textbf{only} para que los navegadores que no soportan las media queries no intenten aplicarlas.\\ \newline Si se coloca \textbf{print} como objeto, las propiedades brindadas se aplicaran solo al formato de la página cuando esta es impresa en papel. Si se coloca \textbf{screen} se hace referencia al formato de la página en la pantalla del dispositivo. En este caso se agrega \textbf{and} con las especificaciones de la pantalla a las que se quieren aplicar las propiedades indicadas.
+
+\subsection{Layout Holy grial}
+
+    Con todo lo visto hasta ahora, ya se puede realizar un layout de manera seria. El formato de layout más utilizado es el layout holy grial, el cual está compuesto por una barra de navegación, seguido del bloque principal (subdividido en 3 columnas, usualmente con el contenido principal en el centro\footnote{Las columnas que no son de contenido principal se indican con la etiqueta \textbf{aside} en lugar de \textbf{main.}}), y un footer. 
+
+\subsection{Movile first}
+
+    Hace referencia a la práctica en la que el diseño de una página web se enfoca inicialmente en la resolución del dispositivo más pequeño (dispositivos móviles, prácticamente siempre) y posteriormente, mediante media quereies, adaptarse a dispositivos cada vez más grandes.
+
+\subsection{Feature queries}
+
+    Se usa para especificar propiedades recientes, las cuales no necesariemente son aceptadas en todos los navegadores. Son de la forma:
+
+    \begin{lstlisting}[language=HTML]
+@supports (propiedades css recientes){
+    codigo css usando tales propiedades  
+}
+    \end{lstlisting}
+
+    Aunque también se usa en casos en que las propiedades no son soportadas debido a la resolución. Por ejemplo cuando se sustituye \textbf{grid} por \textbf{flex}.
+
+\subsection{Container quieries}
+
+    Sirven para definir contenedores y asignarles propiedades según estos cumplan las condiciones de tamaño que nosotros les establezcamos. \\ \newline Para definir una etiqueta (de clase \textit{class}) como contenedor se asigna la propiedad \textbf{container-type}, para nombrar a dicho contenedor se usa la propiedad \textbf{container-name}:
+
+    \begin{lstlisting}[language=HTML]
+.class {
+    container-type: valor;
+    container-name: nombre;
+}
+    \end{lstlisting}
+        
+     Donde el valor por defecto (y donde no se define el contenedor) es \textbf{none}. Si se coloca el valor \textbf{inline-size}, las propiedades se aplican condicionando el ancho. Si se coloca \textbf{size}, se condiciona el ancho y el largo. Las propiedades y las condiciones se especifican como:
+
+    \begin{lstlisting}[language=HTML]
+@container nombre (tamano){
+    codigo css
+}
+    \end{lstlisting}
+
+\section{Grid}
+
+    Funciona de manera similar a \textbf{flex}, sin embargo se trabaja tanto en filas como en columnas. Para indicar que una etiqueta es un \textbf{grid} se usa nuevamente la propiedad \textbf{display:}
+
+    \begin{lstlisting}
+etiqueta {
+    display: grid;
+}
+    \end{lstlisting}
+
+    La primera diferencia con \textbf{flex}, es que no hay colapso de márgenes\footnote{cuando se toma el margen más grande para separar objetos en lugar de sumar los dos espacios de margen.}. \\\newline
+    Otra diferencia es que por defecto, un \textbf{grid} colocará a sus elementos (grid items) en un columna incluso aunque a dichos elemento tengan la propiedad \textbf{inline} o \textbf{inline-block}. Para cambier esto, debemos especificar las medidas de los  grid item. Paara las columnas esto se hace con la propiedad \textbf{grid-template-columns}:
+
+    \begin{lstlisting}[language=HTML]
+grid-template-columns: m1 ... mn;
+    \end{lstlisting}
+
+    Esto indica que se tendrán n columnas, de anchos m1, ..., mn respectivamente. En particular, el orden de los grid item también sigue la dirección que está a favor del texto de escritura. \\ \newline Para las filas se usa la propiedad \textbf{grid-template-rows}
+
+\subsection{Unidades auto y fr}
+
+    Además de contener valores de medida, los valores m1,...,mn de los grid item también puede contener valores como \textbf{auto}, con el cual la fila o columna (no necesariamente igual a los grid item 
+ que contienen) tiene un ancho que abarca todo el espacio disponible. En el caso de haber más de 2 columnas con \textbf{auto}, el espacio se reparte en partes iguales. El espacio disponible es el espacio que no tiene contenido. \\ \newline También se tienen los valores \textbf{fr}, los cuales indican la fracción del espacio total, si considerar sin considerar el espacio que abarca el contenido de los grid item. 
+ 
+ \subsection{funciones repeat y minmax}
+
+    El código:
+
+    \begin{lstlisting}[language=HTML]
+grid-template-colum: 1fr 1fr 1fr 1fr;
+    \end{lstlisting}
+
+    Es equivalente al código:
+
+    \begin{lstlisting}[language=HTML]
+grid-template-colum: repeat(4,1fr);
+    \end{lstlisting}
+    
+    El primer argumento de \textbf{repeat()} se coloca el número de veces que se desea repetir el patrón de código indicado como segundo argumento. En el contexto de grid corresponde al número de columnas.  El primer argumento también puede tener el valor \textbf{auto-fit}, con el cual, se agregan el número de grid item que quepan según el tamaño que se indique. Si se acaban los grid item, pero el tamaño de la pantalla sigue aumentando, los grid item comienzan a crecer para ajustarse o hasta que los límites especificados según y luego solo se recorren. También puede colocarse \textbf{auto-fill}, el cual es análogo a \textbf{auto-fill}, con la salvedad de que siempre se van agregando celdas, aunque estas no contengan un grid item definido. 
+
+    La función \textbf{minmax(v1,v2)}, al colocarse en la propiedad \textbf{grid-template-coolum}, indica que la columna en cuestión puede aumentar su ancho hasta v2 y disminuirlo hasta v1. 
+     
+ \subsection{Grid implícito y explícito}
+
+    Cuando especificamos valores para \textbf{grid-template} \textbf{grid-template-rows} indicamos un cierto número de grid item. Al conjunto  de estos grid item indicados se les conoce como el grid explícito. Sin embargo, puede que se tengan más grid item indicados en el HTML, a los cuales no se les aplican las propiedades por no estar contemplados en las propiedades de grid. Al conjunto de estos grid item se les conoce como gris implícito y tienen ciertas propiedades por defecto. En particular, el flex implícito conserva el número de columnas indicado en el grid explícito, por lo que el grid implícito se agrega como nuevas filas. Para cambiar esto se usa la propiedad:
+
+    \begin{lstlisting}[language=HTML]
+grid-auto-flow: column;       
+    \end{lstlisting}
+
+    Para establecer las dimensiones del gris implícito se usa \textbf{grid-auto-columns} y \textbf{grid-auto-rows}.
+
+\subsection{Grid gap}
+
+    Al igual que con \textbf{flex}, se tiene \textbf{gap} lo cual facilita la separación de los grid items. Debido a las dos dimensiones se tienen que usar \textbf{colum-gap} \textbf{row-gap}. Si ambos tienen el mismo valor solo se usa \textbf{gap.}
+
+\subsection{grid row y grid colum}
+
+     Sirven para indicar las líneas de la cuadrícula entre las que se encuentra a un grid item. Se indican con \textbf{grid-colum-start}, \textbf{grid-colum-end}, \textbf{grid-row-start}, \textbf{grid-row-end}. Son útiles en el caso de que queramos que un grid item abarque más de una fila o más de una columna. Como argumento, en estas propiedades se coloca el número de la fila deseada. En el caso de \textbf{grid-colum-end} \textbf{grid-row-end} puede colocarse \textbf{span n} que en lugar de decir que la última línea de fila o columna es la n-ésima, quiere decir que el grid item abarcará n filas o columnas. Para resumir todo esto se eliminan las palabras \textbf{start} y \textbf{end} y el valor se expresa como \textbf{n/span m}.
+
+\subsection{Dense}
+
+    Cuando se utilizan valores de la forma \textbf{n/span m} en conjunto con los argumentos \textbf{auto-fill} y \textbf{auto-fit}, pueden quedar espacios en blanco debido a que los los grid item  de tamaño \textbf{n/span m} ocupan más de un espacio en el que se subdivide el grid. Esto es debido a que el orden en que se muestran los grid item se mantiene. Para solucionar esto, se usa el valor \textbf{dense} en la propiedad \textbf{grid-auto-flow}: de este modo, el orden se rompe en pos de no dejar espacios en blanco. 
+
+\subsection{Grid area}
+
+   En principio, puede suplir en algunos casos a \textbf{grid-colum} y \textbf{grid-row}. Por ejemplo, el código:
+
+   \begin{lstlisting}[language=HTML]
+etiqueta {
+    grid-column: a/span n;
+    grid-row: b/span m;
+}       
+   \end{lstlisting}
+
+   Es equivalente al código
+    
+   \begin{lstlisting}[language=HTML]
+etiqueta {
+    grid-area: a/span n / b/span m;
+
+    /* Inclusive es equivalente a: */
+    grid-area: a/n/b/m;
+}       
+   \end{lstlisting}
+
+   También sirve para distribuir y nombrar las áreas del objeto usado como grid. Para esto, se usa:
+ 
+   \begin{lstlisting}[language=HTML]
+etiqueta {
+    grid-template-columns: c1 c2 c3;
+    grid-template-rows: r1 r2 r3;
+    grid-template-areas:
+    "espacio1 espacio1 espacio1"
+    "espacio2 espacio3 espacio4"
+    "espacio5 espacio5 espacio5"
+    ;
+}       
+   \end{lstlisting}
+
+    De este modo se indica que la etiqueta es una cuadrícula de 3x3, con dimensiones especificadas por las ri y ci, tal que la primera fila corresponde a un solo elemento de nombre \textit{espacio1}, la segunda fila se divide en tres columnas (elementos de nombre\textit{espacio2}, \textit{espacio3} y \textit{espacio4}) y la tercera fila corresponde enteramente al objeto de nombre espacio5. Posteriormente, se indica en las propiedades de cada objeto o etiqueta el espacio que abarcarán. Por ejemplo, se puede hacer el layout holygrail con las siguientes indicaciones:
+
+    \begin{lstlisting}[language=HTML]
+header{
+    grid-area:espacio1;
+}
+nav{
+    grid-area:espacio2;
+}
+main{
+    grid-area:espacio3;
+}
+aside{
+    grid-area:espacio4;
+}
+footer{
+    grid-area:espacio5;
+}
+
+    \end{lstlisting}
+
+\subsection{Alineación de los grid items}
+
+    De manera análoga a \textbf{flex}, los objetos establecidos como \textbf{grid} tienen la propiedad \textbf{justifý-items}, que indica la alineación de los grid item respecto a las celdas que los contienen, de manera horizontal. Puede tomar los siguientes valores:
+
+    \begin{itemize}
+        \item \textbf{stretch.} Valor por defecto. Estira los grid item para que abarquen toda la celda.
+        \item \textbf{start.} Alinea los grid item al inicio y a favor de la dirección del texto sin tomar en cuenta nada más.
+        \item \textbf{self-start.} Alinea los grid item al inicio y a favor de la dirección del texto, pero si los grid item tienen especificada la otra dirección, esta se respeta y se alinean acorde a dicha dirección. 
+        \item \textbf{left.} Alinea los grid item a la izquierda de su contenedor o celda
+        \item \textbf{center.} Centra los grid item
+        \item \textbf{right.} Alinea los grid item a la derecha de su contenedor o celda.
+        \item \textbf{end.} Alinea los grid item al final y a favor de la dirección del texto sin tomar en cuenta nada más.
+        \item \textbf{self-end.} Alinea los grid item al final y a favor de la dirección del texto, pero si los grid item tienen especificada la otra dirección, esta se respeta y se alinean acorde a dicha dirección.
+        \item \textbf{baseline.} Alinea los grid item de modo que el texto que contienen quede alineado.
+        \item \textbf{first baseline.} Alinea los grid item sobre la primera línea de texto.
+        \item \textbf{last baseline.} Alinea los grid item sobre la última línea de texto.
+    \end{itemize}
+
+    Además de esto, puede indicarse la aineación de un grid item particular, colocando alguno de estos valores en la propiedad \textbf{justify-self}.\\ \newline Para alinear las celdas respecto de la etiqueta definida como grid, se utiliza la propiedad \textbf{justify content}. De manera similar a su correspondiente en  \textbf{flex}, puede tomar los valores \textbf{center, space around, space betwen, space evenly,} etc. \\ \newline Para realizar todo lo anterior de manera vertical, se cambia \textbf{justifý-items} por \textbf{aling-items}, {justify-self} por {aling-self} y \textbf{justify content} por \textbf{aling content}.
+
+\subsection{Subgrid}
+    Puede generarse un grid dentro de otro grid de manera sencilla. Para esto, se genera un \textbf{div} dentro del grid item de nuestra elección. Es dicho \textbf{div} y no en el propio grid item,  el que se indicará como sub grid usando la propiedad \textbf{display:grid} y posteriormente se le agregarán los grid items correspondientes como cualquier otro grid. El único inconveniente de esto es que al especificar el tamaño y número de columnas del subgrid, estas pueden aplicarse sin modificar la distribución de espacio del grid original, provocando que algunos grid item se traslapen. Esto se resuelve especificando únicamente en el grid item que contiene el sub grid, las propiedades \textbf{grid-template-rows: subgrid} y \textbf{grid-template-columns: subgrid}.
+
+\section{Animaciones}
+
+    Se definen de la siguiente manera:
+    \begin{lstlisting}[language=HTML]
+@keyframes nombre_animacion{
+    from{
+        propiedades css antes
+    }
+    to{
+        propiedades css despues   
+    }
+}
+    \end{lstlisting}
+    Si se quieren indicar pasos intermedios:
+    \begin{lstlisting}[language=HTML]
+@keyframes nombre_animacion{
+    0%{
+        propiedades css al 0%
+    }
+    x1%{
+        propiedades css al x1%  
+    }           
+                  .
+                  .
+                  .
+    xn%{
+        propiedades css al xn%  
+    }
+    100%{
+        propiedades css al 100%  
+    }
+}
+    \end{lstlisting} 
+
+    Para indicar que un objeto tiene dicha animación, se le coloca la propiedad \textbf{animation-name: nombre\_animacion}. Para que la animación se ejecute se necesita indicar también al menos la propiedad \textbf{animation-duration}. Algunas propiedades adicionales son:
+
+    \begin{itemize}
+        \item \textbf{animation-delay:} indica el retraso con el que comienza la animación. Se pueden colocar delays negativos.
+        \item \textbf{animation-fil-mode:} indica el estado del objeto cuando se termina la animación. Si se coloca el valor \textbf{backwards}, se queda el estado que tenía el objeto antes de empezar la animación. Si se coloca \textbf{forwards} se queda el estado en el que termina la animación. Si se coloca \textbf{both} el objeto se coloca automaticamente con las propiedades de inicio (to o 0\%) y luego arranca la animación (incluyendo el delay), además, se queda el estado con el que termina la animación.  
+        \item \textbf{animation-timing-function:} indica la función de velocidad con la que ejecuta la animación. Es igual que \textbf{transition-timing-function.}
+        \item \textbf{animation-iteration-count:} indica las veces que se va a repetir la animación. Si se le coloca el valor \textbf{infinite} la animación se repite en bucle siempre.
+        \item \textbf{animation-direction:} si se coloca el valor \textbf{reverse} la animación se ejecuta al recvés. Si se coloca \textbf{alternate}, la animación se ejecuta una vez en la dirección definida y luego una vez al revés. Si se coloca \textbf{alternate-reverse}  la animación se ejecuta una vez al revés y una vez en la dirección definida.
+        \item \textbf{animation-play-state:} indica el estado de la animación. Habitualmente se usa en momentos especificos como cuando se coloca el mouse (:hover) o se da click (:active). Si se coloca el valor \textbf{paused} la animación se detiene. Si se coloca \textbf{running} la animación se ejecuta.
+    \end{itemize}
+
+\subsection{Animaciones con scroll}
+    Hasta ahora, la duración y la velocidad de una animación están determinadas por el \textbf{animation-duration} y el \textbf{animation-timing-function}. Sin embargo, Se puede hacer que una animación se ejecute con el avance de la barra de scroll en lugar de con el tiempo. Para esto, en el objeto que se anima se tienen que quitar todas las propiedades referentes a la duración temporal de la animación (como \textbf{animation-duration}, \textbf{animation-timing-function}, etc.) y se debe colocar la propiedad \textbf{animation-timeline:scroll()} de este modo el avance de la animación dependerá de cuanto se recorra la barra de scroll principal (la de la propia página). Se puede definir un scroll própio para la animación pero eso es muy poco utilizado. Si se llegara a requerir, se recomienda consultar la documentación o el video. 
+
+\subsection{Animación por view}
+
+    Un inconveniente de la animación por scroll es que si la página es muy larga, al recorrerla, puede perderse de vista la animación. Para solucionar esto, puede hacerse que la animación, además de depender del scroll dependa de si el objeto animado está en pantalla. Esto se hace dándole el valor \textbf{view()} a la propiedad \textbf{animation-timeline.} Si se desea que la animación comience cuando aparece un objeto distinto en pantalla, se debe asignar la propiedad \textbf{view-timeline: --nombre block} de este modo, al colocar \textbf{animation-timeline: --nombre} en el objeto animado la ejecución de la animación dependerá del otro objeto. Si se quiere que la animación empiece, por ejemplo, un poco después de aparecer el objeto o que termine un poco antes de que salga de pantalla, se coloca el valor \textbf{cover} seguido del porcentaje deseado en las propiedades \textbf{animation-range-start} y \textbf{animation-range-end}. \\ \newline \textbf{cover} indica que la animación comienza cuando el objeto comienza a aparecer en el límite establecido. Este valor se puede cambiar por \textbf{contain}, que indica que la animación indica hasta que el objeto cruza por completo el límite establecido. En ambos casos se pueden colocar porcentajes negativos.
+
+\section{Funciones}
+    Se indican como \textbf{nombre\_funcion()}.
+
+\subsection{funciones en Filter y en backdrop filter}
+    La propiedad \textbf{filter} sirve para colocar filtros de imagen a un objeto y a todos sus hijos. Algunos de los valores que puede tomar son los siguientes: 
+    
+    \begin{itemize}
+        \item \textbf{drop-shadow().} Agrega e intensifica la sombras del contorno del objeto al que se le aplique.
+        \item \textbf {blur().} Desenfoca el objeto al que se le aplique, así como a todos sus hijos sin importar su posición.  
+        \item \textbf{brightness().} Ajusta el brillo del objeto.
+        \item \textbf{contrast().} Ajusta el contraste del objeto.
+        \item \textbf{grayscale().} Ajusta la escala de grises.
+        \item \textbf{saturate().} Ajusta la saturación.
+        \item \textbf{hue-rotate(ndeg).} Cambia los colores al rotar la escala circular de color n grados. 
+        \item \textbf{opacity().} Controla la opacidad.
+        \item \textbf{invert().} Invierte los colores (saca el negativo).
+        \item \textbf{sepia ().} Le da un tono sepia al objeto.
+    \end{itemize}
+
+    Por otro lado, la propiedad \textbf{backdrop-filter} aplica los filtros a todo lo que se encuentre detrás del objeto al que se le aplique. Puede tomar los mimos valores que \textbf{filter.}
+
+\subsection{Funciones de transformación}
+
+    Modifican la forma u orientación del objeto al que se le aplican. Se colocan como valores de la propiedad \textbf{transform}. Se tienen las siguientes funciones:
+
+    \begin{itemize}
+        \item \textbf{scale().} Cambia la escala del objeto al que se le aplique. Para modificar solo el ancho se usa \textbf{scalex()}. Para modificar el alto se usa \textbf{scaley()}. Todo lo anterior es equivalente a colocar \textbf{scale:} como propiedad:
+
+        \begin{lstlisting}[language=HTML]
+etiqueta {
+    scale: valor;
+
+    /*Para ancho y alto diferentes*/
+    scale: ancho alto;
+}
+        \end{lstlisting}
+        \item \textbf{skew(ndeg).} Inclina la vertical n grados. También se tienen \textbf{skewx()} y \textbf{skewy()} que actúan en las respectivas direcciones. 
+        \item \textbf{rotate().} Rota el objeto.
+        \item \textbf{translate(x, y).} Desplaza el objeto. También se tienen \textbf{translatex()} y \textbf{translatey()}. También se puede colocar directamente como la propiedad \textbf{translate:}
+    \end{itemize}
+
+\subsection{ Funciones min, maz y Clamp}
+    \textbf{max(a1, ..., b1)} y \textbf{min(a1, ..., b1)} entregan el valor máximo y mínimo de a1, ..., b1, respectivamente. Esto es útil cuando se quieren comparar medidas con diferentes unidades. Por ejemplo, 900\textbf{px} con 100\textbf{vh}, etc.\\ \newline La función \textbf{clamp()} es tal que si \textbf{propiedad: clamp(a,x,b);}, \textbf{clamp()} vale \textbf{x} si \textbf{a} $\leq$ \textbf{propiedad} $\leq$ \textbf{b}, vale \textbf{a} si \textbf{propiedad} $\leq$ \textbf{a} y vale \textbf{b} si \textbf{b}$\leq$\textbf{propiedad}.
+
+\subsection{Variables}
+
+    Cuando un valor se repite muchas veces a lo largo de todo el código, es útil definir una variable con dicho valor para simplificar el código. Esto se hace de la siguiente forma:
+
+    \begin{lstlisting}[language=HTML]
+etiqueta{
+    --nombre_variable: valor;
+}
+    \end{lstlisting}
+
+    De manera que puede colocarse \textbf{var(--nombre\_variable)}, en lugar del valor. El alcance de la variable son todos los hijos del elemento, etiqueta o clase en la que se defina. Las variables también se pueden redefinir, con la misma estructura de código, dentro de los hijos. Para que la variable tenga el alcance de toda la página, se define en :root \\\newline Otra forma de definir una variable de manera global es de la siguiente manera:
+
+    \begin{lstlisting}[language=HTML]
+@property --nombre_variable {
+    syntax: "<type>" ;
+    inherits:  ;
+    initial-value: valor;
+}
+    \end{lstlisting}
+
+    donde type, especifica el tipo de variable (color, number, etc.). En inherits se coloca si el valor de la variable se puede heredar (true) o si no (false).
+
+\subsection{Función calc()} 
+
+    Permite realizar operaciones aritméticas básicas, la cuales se colocan como argumento. La utilidad de esto es que las operaciones se pueden realizar entre elementos de diferentes unidades de medida.
+
+\section{scroll}
+
+    Una vez establecido un scroll (por ejemplo con \textbf{overflow:scroll}) en el objeto deseado, se pueden poner establecer las siguientes propiedades de scroll:
+
+    \begin{itemize}
+        \item \textbf{scroll-behavior:} control de la velocidad con la que se desliza el scroll. Solo toma los valores  \textbf{Auto} y \textbf{smooth} que suaviza el recorrido.
+        \item \textbf{scrollbar-color:} se indican los colores del fondo de la barra de navegación y de la barra misma.
+        \item \textbf{scrollbar-width:} indica el ancho de la barra. Solo puede tomar los valores \textbf{none, auto y thin}
+    \end{itemize}
+
+    Para modificar las propiedades del scroll principal, Las propiedades no se indican en la etiqueta \textbf{body}, se indican en la subclase \textbf{root.}
+
+\section{Initial letter}
+
+    Para acceder a la primera letra de un párrafo \textbf{p}, se usa:
+
+    \begin{lstlisting}[language=HTML]
+p::first-letter {
+    Propiedades CSS primera letra
+}
+    \end{lstlisting}
+
+    Se tienen las siguientes propiedades:
+    \begin{itemize}
+        \item \textbf{initial-leter: a b;} indica que la primera letra va a abarcar \textbf{a} líneas desde la base y dicha base se encontrará en la línea \textbf{b}.
+        \item \textbf{padding:} el padding de toda la vida.
+        \item \textbf{font-family:} para indicarle una fuente en particular.
+    \end{itemize}
+    
+\section{Unidades dinámicas del viewport}
+
+    \textbf{vh}(\textbf{vw}) son medidas visibles de la página. En el caso de dispositivos móviles estas no son constantes, pues dicho dispositivo puede agregar y quitar menús externos en la pantalla, por lo cual un elemento que está centrado en un ordenador  puede no estarlo en un dispositivo móvil debido a la aparición o remoción de uno de estos menús. Una forma de adaptar las medidas es usando \textbf{svh(svw)} cuando no hay menús y \textbf{lvh(lvw)} cuando si lo hay; sin embargo, esto requiere de aplicar muchas condiciones, lo cual no es práctico. Esto se soluciona con las medidas \textbf{dvh(dvw)} las cuales se adaptan automáticamente.  
+ 
+\section{Función color-mix}
+
+    Sirve para combinar colores. Tiene la siguiente estructura:
+    
+    \begin{lstlisting}[language=HTML]
+color-mix(in type, color1 a%, color2 b% )       
+    \end{lstlisting}
+\end{multicols}   
+
+    donde \textbf{type} hace referencia al tipo de color (rgb, hexadecimal, etc.) y el método de combinación., y a,b a los proporciones en la mezcal de los colores 1 y 2 respectivamente.
+
+\section{Clip path}
+
+    Propiedad de las imágenes que permite recortarlas. Se indica como propiedad \textbf{clip-path:}. Los valores a colocar se pueden obtener de una página que genera el código segun la forma en la que deseemos cortar la imágen. 
+    
+ \bibliographystyle{ieeetr}
+    \addcontentsline{toc}{chapter}{Bibliografía}
+    \bibliography{biblio.bib}
+
+\end{document}
